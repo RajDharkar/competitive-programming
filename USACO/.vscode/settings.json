@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "iostream": "cpp"
+    },
+    "java.project.sourcePaths": [
+        "Bronze\\CoolStuff",
+        "Bronze\\2023-2024\\January",
+        "Silver\\PrefixSums",
+        "CoolStuff"
+    ],
+    "C_Cpp.errorSquiggles": "disabled"
+}
