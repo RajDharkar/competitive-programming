@@ -1,5 +1,3 @@
-package USACO.Silver.GraphTransversal;
-
 import java.util.*;
 import java.io.*;
 
@@ -22,8 +20,10 @@ public class MooCast {
     }
     @SuppressWarnings("unchecked")
     public static void main(String[] args) throws IOException{
-        BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
-        PrintWriter pw = new PrintWriter(System.out);
+        BufferedReader r = new BufferedReader(new FileReader("moocast.in"));
+        PrintWriter pw = new PrintWriter(new FileWriter("moocast.out"));
+        // BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
+        // PrintWriter pw = new PrintWriter(System.out);
         int n = Integer.parseInt(r.readLine());
         adj = new ArrayList[n];
         visited = new boolean[n];
@@ -45,13 +45,13 @@ public class MooCast {
         }
         int max = 0;
         for(int i = 0; i < n; i++){
-            if(!visited[i]){
-                visited[i] = true;
-                count = 1;
-                max = Math.max(max, dfs(i)); 
-            }
+            visited = new boolean[n];
+            visited[i] = true;
+            count = 1;
+            max = Math.max(max, dfs(i)); 
         }
         pw.println(max);
         pw.close();
+        r.close();
     }
 }
