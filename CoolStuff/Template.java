@@ -1,5 +1,4 @@
-package Bronze;
-
+package CoolStuff;
 import java.util.*;
 import java.io.*;
 
