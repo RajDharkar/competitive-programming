@@ -20,10 +20,10 @@ public class ClosingTheFarm {
     }
     @SuppressWarnings("unchecked")
     public static void main(String[] args) throws IOException{
-        BufferedReader r = new BufferedReader(new FileReader("closing.in"));
-        PrintWriter pw = new PrintWriter(new FileWriter("closing.out"));
-        // BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
-        // PrintWriter pw = new PrintWriter(System.out);
+        // BufferedReader r = new BufferedReader(new FileReader("closing.in"));
+        // PrintWriter pw = new PrintWriter(new FileWriter("closing.out"));
+        BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
+        PrintWriter pw = new PrintWriter(System.out);
         StringTokenizer st = new StringTokenizer(r.readLine());
         int n = Integer.parseInt(st.nextToken());
         int m = Integer.parseInt(st.nextToken());
