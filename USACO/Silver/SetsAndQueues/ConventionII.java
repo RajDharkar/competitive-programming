@@ -1,3 +1,4 @@
+
 import java.io.*;
 import java.util.*;
 
@@ -16,7 +17,7 @@ public class ConventionII {
         }
         Arrays.sort(cows, Comparator.comparingInt(cow -> cow.arrival));
         int maxWaitTime = 0;
-        int currentWaitTime = 0;
+        //int currentWaitTime = 0;
         int curr = 0;
         int time = 0;
         PriorityQueue<Cow> waiting = new PriorityQueue<>();
