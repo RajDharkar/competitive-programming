@@ -1,9 +1,9 @@
 import java.util.*;
 import java.io.*;
-
+@SuppressWarnings("unused")
 class Main {
     static BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
-    PrintWriter pw = new PrintWriter(System.out);
+    static PrintWriter pw = new PrintWriter(System.out);
     static boolean[] visited;
     static List<Integer>[] adj;
     static class Pair {
@@ -21,11 +21,11 @@ class Main {
     }
 
 
-    static int readInt() {
+    static int readInt() throws IOException {
         return Integer.parseInt(r.readLine());
     }
 
-    static int[] readArray(int size) {
+    static int[] readArray(int size) throws IOException {
         int[] t_array = new int[size];
         StringTokenizer st = new StringTokenizer(r.readLine());
         for (int i = 0; i < size; i++) {
@@ -34,7 +34,7 @@ class Main {
         return t_array;
     }
 
-    static ArrayList<Integer> readArrayList(int size) {
+    static ArrayList<Integer> readArrayList(int size) throws IOException {
         ArrayList<Integer> t_arrayList = new ArrayList<>();
         StringTokenizer st = new StringTokenizer(r.readLine());
         for (int i = 0; i < size; i++) {
@@ -43,6 +43,7 @@ class Main {
         return t_arrayList;
     }
 
+    
     static void floodfill(int r, int c, int color) {
         final int MAX_N = 1000;
         int[][] grid = new int[MAX_N][MAX_N];
@@ -89,8 +90,8 @@ class Main {
     public static void main(String[] args) throws FileNotFoundException {
         
         // setIO("file"); // Adjust the file name accordingly
-        int n = readInt();
-        int[] arr = readArray(n);
+        //int n = readInt();
+        //int[] arr = readArray(n);
         // ArrayList<Integer> arr = readArrayList(n, scanner); // if you prefer ArrayList
 
     }
