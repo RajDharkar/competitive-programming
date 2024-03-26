@@ -1,3 +1,4 @@
+package Contests.USACO.Silver.Practice.GreedyAlgos;
 
 import java.util.*;
 import java.io.*;

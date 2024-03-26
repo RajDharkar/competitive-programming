@@ -1,3 +1,5 @@
+package Contests.USACO.Silver.Practice.SetsAndQueues;
+
 
 import java.io.*;
 import java.util.*;

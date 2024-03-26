@@ -1,3 +1,4 @@
+package Contests.USACO.Silver.Contests.February2024;
 import java.io.*;
 import java.util.*;
 

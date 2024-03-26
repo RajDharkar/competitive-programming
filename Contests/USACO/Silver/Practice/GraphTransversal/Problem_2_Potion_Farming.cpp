@@ -19,39 +19,15 @@ vector<int> readVector(int size){
     }
     return t_vector;
 }
-
-
-void floodfill(int r, int c, int color) {
-    //change when utilizing method
-    const int MAX_N = 1000;
-
-    int grid[MAX_N][MAX_N];  // the grid itself
-    int row_num;
-    int col_num;
-    bool visited[MAX_N][MAX_N];  // keeps track of which nodes have been visited
-    int curr_size = 0;           // reset to 0 each time we start a new component
-	if ((r < 0 || r >= row_num || c < 0 || c >= col_num)  // if out of bounds
-	    || grid[r][c] != color                            // wrong color
-	    || visited[r][c]  // already visited this square
-	)
-		return;
-
-	visited[r][c] = true;  // mark current square as visited
-	curr_size++;           // increment the size for each square we visit
-
-	// recursively call flood fill for neighboring squares
-	floodfill(r, c + 1, color);
-	floodfill(r, c - 1, color);
-	floodfill(r - 1, c, color);
-	floodfill(r + 1, c, color);
-}
-
-
 int n; //change when utilizing method
-vector<vector<int>> adj(n); //change when utilizing method
-vector<bool> visited(n); //change when utilizing method
-vector<int> potions(n);
 int leafNodes = 0;
+vector<vector<int>> adj;
+vector<int> potions;
+vector<bool> visited;
+vector<bool> isPotionPos;
+vector<vector<int>> ppT;
+vector<bool> isLeafNode;
+int transversal = 0;
 void dfs(int current_node) {
 	if (visited[current_node]) { return; }
 	    visited[current_node] = true;
@@ -63,27 +39,75 @@ void dfs(int current_node) {
         }
     }
     if(leafNode){
+        isLeafNode[current_node] = true;
         leafNodes++;
     }
 
 }
+void otherdfs(int current_node) {
+    if(isLeafNode[current_node]){
+        transversal++;
+    }
+    if(transversal >= leafNodes){
+        return;
+    }
+    cout << current_node << '\n';
+    if(isPotionPos[current_node])
+        ppT[transversal].push_back(current_node);
+	if (visited[current_node]) { 
+        return; 
+    }
+	visited[current_node] = true;
+    
+    //cout << current_node << '\n';
+	for (int neighbor : adj[current_node]) { 
+        otherdfs(neighbor);
+    }
+}
 int main() {
     cin >> n;
+    adj = vector<vector<int>>(n); //change when utilizing method
+    visited = vector<bool>(n);
+    potions = vector<int>(n);
+    isLeafNode = vector<bool>(n);
     for(int i = 0; i < n; i++){
-        int hold;
-        cin >> hold;
-        potions.push_back(--hold); 
+       int a;
+       cin >> a;
+       --a;
+       potions[i] = a;
+       //cout << potions[i] << '\n';
     }
     for(int i = 0; i < n - 1; i++){
         int a, b;
         cin >> a >> b;
-        cout << a << " " << b << '\n';
+        //cout << a << " " << b << '\n';
         a-=1;
         b-=1;
         adj[a].push_back(b);
         adj[b].push_back(a);
     }
-    
-    //dfs(0);
+    dfs(0);
     cout << leafNodes << '\n';
+    isPotionPos = vector<bool>(n);
+    ppT = vector<vector<int>>(leafNodes);
+    for(int i = 0; i < leafNodes; i++){
+        isPotionPos[potions[i]] = true;
+    }
+    // for(bool i : isPotionPos){
+    //     cout << i << '\n';
+    // }
+    // for(vector<int> a: adj){
+    //     for(int i : a){
+    //         cout << i << " ";
+    //     }
+    //     cout << '\n';
+    // }
+    for(int i = 0; i < n; i++)visited[i] = false;
+    otherdfs(0);
+    for(vector<int> a: ppT){
+        for(int i : a){
+            cout << i << " ";
+        }
+        cout << '\n';
+    }
 }
