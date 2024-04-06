@@ -273,18 +273,15 @@ inline namespace FileIO {
 		if (sz(s)) setIn(s+".in"), setOut(s+".out"); // for old USACO
 	}
 }
-bool visited[2000][2000];
-bool curr[2000][2000];
 
 int main() {
 	// read read read
-	setIO();
-	ints(n);
-    F0R(i, n){
-        ints(x, y);
-        curr[x][y] = true;
-        
-        
+    ll n;
+    cin >> n;
+    for(ll i = 1; i <= n; i++){
+        ll a = ((i*i)*(i*i-1))/2;
+        ll b = 4 * (i - 1) * (i - 2);
+        ps(a - b);
     }
 	// you should actually read the stuff at the bottom
 }

@@ -273,19 +273,49 @@ inline namespace FileIO {
 		if (sz(s)) setIn(s+".in"), setOut(s+".out"); // for old USACO
 	}
 }
-bool visited[2000][2000];
-bool curr[2000][2000];
 
 int main() {
 	// read read read
 	setIO();
-	ints(n);
-    F0R(i, n){
-        ints(x, y);
-        curr[x][y] = true;
-        
-        
+    ints(n);
+    vi ans(n, 0);
+    if(n == 1){
+        ps(1);
     }
+    else if(n == 4){
+        cout << 2 << " " << 4 << " " << 1 << " " << 3;
+    }
+    else if(n < 5){
+        cout << "NO SOLUTION";
+    }
+    else{
+        int num = 1;
+        int index;
+        for(int i = 0; i < n; i++){
+            if(num > n){
+                index = i;
+                break;
+            }
+            ans[i] = num;
+            num+=2;
+        }
+        num = 2;
+        for(int i = index; i < n; i++){
+            ans[i] = num;
+            num+=2;
+        }
+        for(int i = 0; i < n-1; i++){
+            cout << ans[i] << " ";
+        }
+        cout << ans[n-1];
+    }
+	//1
+    //no sol
+    //no sol
+    //no sol
+    // 1 3 5 2 4
+    //1 3 5 2 4 6
+    //1 3 5 7 2 4 6
 	// you should actually read the stuff at the bottom
 }
 

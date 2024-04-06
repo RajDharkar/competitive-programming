@@ -17,7 +17,7 @@ int main() {
     // for(int i = 0; i < n+1; i++){
     //     cout << psum[i] << " ";
     // }
-    cout << endl;
+    // cout << endl;
     while (m--) {
         ll t;
         cin >> t;
