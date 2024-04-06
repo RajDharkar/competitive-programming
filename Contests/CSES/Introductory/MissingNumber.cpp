@@ -17,10 +17,10 @@
 #include <vector>
 #include <climits>
 using namespace std;
-
+ 
 using ll = long long;
 using db = long double; // or double, if TL is tight
-using str = string; // yay python!
+using str = string; // yay python! 
 
 // pairs
 using pi = pair<int,int>;
@@ -33,8 +33,8 @@ using pd = pair<db,db>;
 #define tcT template<class T
 #define tcTU tcT, class U
 // ^ lol this makes everything look weird but I'll try it
-tcT> using V = vector<T>;
-tcT, size_t SZ> using AR = array<T,SZ>;
+tcT> using V = vector<T>; 
+tcT, size_t SZ> using AR = array<T,SZ>; 
 using vi = V<int>;
 using vb = V<bool>;
 using vl = V<ll>;
@@ -46,14 +46,13 @@ using vpd = V<pd>;
 
 // vectors
 // oops size(x), rbegin(x), rend(x) need C++17
-
 #define sz(x) int((x).size())
 #define bg(x) begin(x)
 #define all(x) bg(x), end(x)
-#define rall(x) x.rbegin(), x.rend()
-#define sor(x) sort(all(x))
+#define rall(x) x.rbegin(), x.rend() 
+#define sor(x) sort(all(x)) 
 #define rsz resize
-#define ins insert
+#define ins insert 
 #define pb push_back
 #define eb emplace_back
 #define ft front()
@@ -77,14 +76,14 @@ const int MX = (int)2e5+5;
 const ll BIG = 1e18; // not too close to LLONG_MAX
 const db PI = acos((db)-1);
 const int dx[4]{1,0,-1,0}, dy[4]{0,1,0,-1}; // for every grid problem!!
-mt19937 rng((uint32_t)chrono::steady_clock::now().time_since_epoch().count());
+mt19937 rng((uint32_t)chrono::steady_clock::now().time_since_epoch().count()); 
 template<class T> using pqg = priority_queue<T,vector<T>,greater<T>>;
 
 // bitwise ops
 // also see https://gcc.gnu.org/onlinedocs/gcc/Other-Builtins.html
 constexpr int pct(int x) { return __builtin_popcount(x); } // # of bits set
 constexpr int bits(int x) { // assert(x >= 0); // make C++11 compatible until USACO updates ...
-	return x == 0 ? 0 : 31-__builtin_clz(x); } // floor(log2(x))
+	return x == 0 ? 0 : 31-__builtin_clz(x); } // floor(log2(x)) 
 constexpr int p2(int x) { return 1<<x; }
 constexpr int msk2(int x) { return p2(x)-1; }
 
@@ -98,18 +97,18 @@ tcT> bool ckmax(T& a, const T& b) {
 
 tcTU> T fstTrue(T lo, T hi, U f) {
 	++hi; assert(lo <= hi); // assuming f is increasing
-	while (lo < hi) { // find first index such that f is true
+	while (lo < hi) { // find first index such that f is true 
 		T mid = lo+(hi-lo)/2;
-		f(mid) ? hi = mid : lo = mid+1;
-	}
+		f(mid) ? hi = mid : lo = mid+1; 
+	} 
 	return lo;
 }
 tcTU> T lstTrue(T lo, T hi, U f) {
 	--lo; assert(lo <= hi); // assuming f is decreasing
-	while (lo < hi) { // find first index such that f is true
+	while (lo < hi) { // find first index such that f is true 
 		T mid = lo+(hi-lo+1)/2;
 		f(mid) ? lo = mid : hi = mid-1;
-	}
+	} 
 	return lo;
 }
 tcT> void remDup(vector<T>& v) { // sort and remove duplicates
@@ -210,9 +209,9 @@ inline namespace ToString {
 		return "{"+ts_sep(v,", ")+"}"; }
 
 	// for nested DS
-	template<int, class T> typename enable_if<!needs_output_v<T>,vs>::type
+	template<int, class T> typename enable_if<!needs_output_v<T>,vs>::type 
 	  ts_lev(const T& v) { return {ts(v)}; }
-	template<int lev, class T> typename enable_if<needs_output_v<T>,vs>::type
+	template<int lev, class T> typename enable_if<needs_output_v<T>,vs>::type 
 	  ts_lev(const T& v) {
 		if (lev == 0 || !sz(v)) return {ts(v)};
 		vs res;
@@ -235,10 +234,10 @@ inline namespace Output {
 	template<class T, class... U> void pr_sep(ostream& os, str sep, const T& t, const U&... u) {
 		pr_sep(os,sep,t); os << sep; pr_sep(os,sep,u...); }
 	// print w/ no spaces
-	template<class ...T> void pr(const T&... t) { pr_sep(cout,"",t...); }
+	template<class ...T> void pr(const T&... t) { pr_sep(cout,"",t...); } 
 	// print w/ spaces, end with newline
 	void ps() { cout << "\n"; }
-	template<class ...T> void ps(const T&... t) { pr_sep(cout," ",t...); ps(); }
+	template<class ...T> void ps(const T&... t) { pr_sep(cout," ",t...); ps(); } 
 	// debug to cerr
 	template<class ...T> void dbg_out(const T&... t) {
 		pr_sep(cerr," | ",t...); cerr << endl; }
@@ -263,33 +262,24 @@ inline namespace Output {
 	}
 }
 
-inline namespace FileIO {
-	void setIn(str s)  { freopen(s.c_str(),"r",stdin); }
-	void setOut(str s) { freopen(s.c_str(),"w",stdout); }
-	void setIO(str s = "") {
-		cin.tie(0)->sync_with_stdio(0); // unsync C / C++ I/O streams
-		// cin.exceptions(cin.failbit);
-		// throws exception when do smth illegal
-		// ex. try to read letter into int
-		if (sz(s)) setIn(s+".in"), setOut(s+".out"); // for old USACO
-	}
-}
-
 int main() {
 	// read read read
-	setIO();
-	ll n;
-	cin >> n;
-	while(n!=1){
-        cout << n << " ";
-        if(n%2 == 0){
-            n/=2;
-        }
-        else{
-            n=n*3 + 1;
-        }
+    ints(n);
+    vi a(n-1);
+    re(a);
+    bool b[n];
+	F0R(i, n){
+		b[i] = false;
 	}
-	cout << 1;
+    for(int i = 0; i < n-1; i++){
+        b[a[i]-1] = true;
+    }
+    FOR(i, 0, n){
+        if(!b[i]){
+            cout << (i+1);
+        }
+    }
+
 	// you should actually read the stuff at the bottom
 }
 
