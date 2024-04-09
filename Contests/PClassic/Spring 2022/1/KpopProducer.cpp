@@ -2,9 +2,26 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-
+typedef long long ll;
 string danceCommand(string word, vector<int> shifts) {
-    return "";
+    ll sum = 0;
+    string ret = "";
+    int n = int(shifts.size());
+    for(int i = 0; i < shifts.size(); i++){
+        sum+=shifts[i];
+    }
+    int k = int(word.size());
+    sum%=int(word.size());
+    char ans[k];
+    for(int i = 0; i < k; i++){
+        ans[i] = word[(i-sum + k)%k];
+        // cout << ans[i];
+    }
+    for(int i = 0; i < k; i++){
+        string b = string(1, ans[i]);
+        ret.append(b);
+    }
+    return ret;
 }
 
 int main() {
