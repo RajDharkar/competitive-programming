@@ -16,6 +16,8 @@
 #include <set>
 #include <vector>
 #include <climits>
+#include <unordered_set>
+
 using namespace std;
  
 using ll = long long;
@@ -273,49 +275,34 @@ inline namespace FileIO {
 		if (sz(s)) setIn(s+".in"), setOut(s+".out"); // for old USACO
 	}
 }
-const int MAX_N = 501;
-bitset<MAX_N> reachable[MAX_N];
-vi cows[501];
-
-void dfs(int i, int cow) {
-    if (reachable[i][cow]) {
-        return;
-    }
-    reachable[i][cow] = true;
-    for (int node : cows[cow]) {
-        dfs(i, node);
-    }
-}
 
 int main() {
-    int n;
-    cin >> n;
-
-    for (int i = 1; i <= n; i++) {
-		cows[i].resize(n);
-        for(int &g : cows[i]){
-			cin >> g;
-		}
-		while(cows[i].back() != i){	
-			cows[i].pop_back();
-		}
-    }
-
-    // Performing DFS from each cow.
-    for (int i = 1; i <= n; i++) {
-        dfs(i, i);
-    }
-    // Outputting reachable cows.
-    for (int i = 1; i <= n; i++) {
-        for (int g : cows[i]) {
-            if (reachable[g][i]) {
-                ps(g);
-				break;
+	// read read read
+	setIO();
+	ints(t);
+    while(t--){
+        ll a, b, l;
+		cin >> a >> b >> l;
+        if(a == 1 && b == 1){
+            ps(1);
+            continue;
+        }
+		unordered_set<ll> ks;
+		//cout << pow(16, 1.0/4) << endl;
+		// cout << pow(l, 1.0/a) << endl;
+        for(ll i = 0; pow(a, i) <= l; i++){
+            for(ll j = 0; pow(b, j) <= l; j++){
+                ll power = pow(a, i) * pow(b, j);
+                if(l % power == 0){
+					// cout << a << " " << i << endl;
+					// cout << b << " " << j << endl; 
+					ks.insert(l / power);
+				}
             }
         }
+		ps(sz(ks));
     }
-
-   
+    
 	// you should actually read the stuff at the bottom
 }
 

@@ -273,49 +273,16 @@ inline namespace FileIO {
 		if (sz(s)) setIn(s+".in"), setOut(s+".out"); // for old USACO
 	}
 }
-const int MAX_N = 501;
-bitset<MAX_N> reachable[MAX_N];
-vi cows[501];
-
-void dfs(int i, int cow) {
-    if (reachable[i][cow]) {
-        return;
-    }
-    reachable[i][cow] = true;
-    for (int node : cows[cow]) {
-        dfs(i, node);
-    }
-}
 
 int main() {
-    int n;
-    cin >> n;
-
-    for (int i = 1; i <= n; i++) {
-		cows[i].resize(n);
-        for(int &g : cows[i]){
-			cin >> g;
-		}
-		while(cows[i].back() != i){	
-			cows[i].pop_back();
-		}
+	// read read read
+	setIO();
+	ints(t);
+    while(t--){
+        ints(n, a, b);
+        int ans = min(a * n, (n/2) * b + a*(n%2));
+        cout << ans << endl;
     }
-
-    // Performing DFS from each cow.
-    for (int i = 1; i <= n; i++) {
-        dfs(i, i);
-    }
-    // Outputting reachable cows.
-    for (int i = 1; i <= n; i++) {
-        for (int g : cows[i]) {
-            if (reachable[g][i]) {
-                ps(g);
-				break;
-            }
-        }
-    }
-
-   
 	// you should actually read the stuff at the bottom
 }
 

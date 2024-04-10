@@ -16,6 +16,8 @@
 #include <set>
 #include <vector>
 #include <climits>
+#include <unordered_set>
+
 using namespace std;
  
 using ll = long long;
@@ -273,49 +275,37 @@ inline namespace FileIO {
 		if (sz(s)) setIn(s+".in"), setOut(s+".out"); // for old USACO
 	}
 }
-const int MAX_N = 501;
-bitset<MAX_N> reachable[MAX_N];
-vi cows[501];
-
-void dfs(int i, int cow) {
-    if (reachable[i][cow]) {
-        return;
-    }
-    reachable[i][cow] = true;
-    for (int node : cows[cow]) {
-        dfs(i, node);
-    }
-}
 
 int main() {
-    int n;
-    cin >> n;
-
-    for (int i = 1; i <= n; i++) {
-		cows[i].resize(n);
-        for(int &g : cows[i]){
-			cin >> g;
-		}
-		while(cows[i].back() != i){	
-			cows[i].pop_back();
-		}
-    }
-
-    // Performing DFS from each cow.
-    for (int i = 1; i <= n; i++) {
-        dfs(i, i);
-    }
-    // Outputting reachable cows.
-    for (int i = 1; i <= n; i++) {
-        for (int g : cows[i]) {
-            if (reachable[g][i]) {
-                ps(g);
-				break;
+	// read read read
+	setIO();
+	ints(t);
+    while(t--){
+        ints(n);
+        vector<int> a(n);
+        re(a);
+        ll sum = 0;
+        for(int i =0; i < n; i++){
+            sum+=a[i];
+        }
+        if(sum % 3 == 0){
+            cout << 0 << endl;
+        }
+        if(sum % 3 == 1){
+            bool find = 0;
+            for(int i = 0; i < n; i++){
+                if(a[i] % 3 == 1){
+                    find = 1;
+                }
             }
+            if(find){cout << 1 << endl; continue;}
+            cout << 2 << endl;
+        }
+        if(sum % 3 == 2){
+            cout << 1 << endl;
         }
     }
-
-   
+    
 	// you should actually read the stuff at the bottom
 }
 
