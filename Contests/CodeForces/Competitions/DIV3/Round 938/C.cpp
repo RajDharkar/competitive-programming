@@ -16,6 +16,8 @@
 #include <set>
 #include <vector>
 #include <climits>
+#include <unordered_set>
+
 using namespace std;
  
 using ll = long long;
@@ -273,49 +275,47 @@ inline namespace FileIO {
 		if (sz(s)) setIn(s+".in"), setOut(s+".out"); // for old USACO
 	}
 }
-const int MAX_N = 501;
-bitset<MAX_N> reachable[MAX_N];
-vi cows[501];
-
-void dfs(int i, int cow) {
-    if (reachable[i][cow]) {
-        return;
-    }
-    reachable[i][cow] = true;
-    for (int node : cows[cow]) {
-        dfs(i, node);
-    }
-}
 
 int main() {
-    int n;
-    cin >> n;
-
-    for (int i = 1; i <= n; i++) {
-		cows[i].resize(n);
-        for(int &g : cows[i]){
-			cin >> g;
-		}
-		while(cows[i].back() != i){	
-			cows[i].pop_back();
-		}
-    }
-
-    // Performing DFS from each cow.
-    for (int i = 1; i <= n; i++) {
-        dfs(i, i);
-    }
-    // Outputting reachable cows.
-    for (int i = 1; i <= n; i++) {
-        for (int g : cows[i]) {
-            if (reachable[g][i]) {
-                ps(g);
-				break;
+	// read read read
+	setIO();
+	ints(t);
+    while(t--){
+        ll n, k;
+        cin >> n >> k;
+        vector<int> arr(n);
+        re(arr);
+        vector<int> sorted;
+        ll sum = 0;
+        F0R(i, n){
+            sum+=arr[i];
+        }
+        if(k >= sum){
+            cout << n << endl;
+            continue;
+        }
+       
+        int lp = 0;
+        int rp = n-1;
+        bool lpTurn = true;
+        while(lp <= rp){
+            if(lpTurn){
+                sorted.push_back(arr[lp]);
+                lp++;
+            }
+            else{
+                sorted.push_back(arr[rp]);
+                rp--;
+            }
+            if(lpTurn){
+                lpTurn = false;
+            }
+            else{
+                lpTurn = true;
             }
         }
     }
-
-   
+    
 	// you should actually read the stuff at the bottom
 }
 

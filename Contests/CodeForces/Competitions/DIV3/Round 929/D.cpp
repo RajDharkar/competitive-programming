@@ -16,6 +16,8 @@
 #include <set>
 #include <vector>
 #include <climits>
+#include <unordered_set>
+
 using namespace std;
  
 using ll = long long;
@@ -273,49 +275,37 @@ inline namespace FileIO {
 		if (sz(s)) setIn(s+".in"), setOut(s+".out"); // for old USACO
 	}
 }
-const int MAX_N = 501;
-bitset<MAX_N> reachable[MAX_N];
-vi cows[501];
-
-void dfs(int i, int cow) {
-    if (reachable[i][cow]) {
-        return;
-    }
-    reachable[i][cow] = true;
-    for (int node : cows[cow]) {
-        dfs(i, node);
-    }
-}
 
 int main() {
-    int n;
-    cin >> n;
-
-    for (int i = 1; i <= n; i++) {
-		cows[i].resize(n);
-        for(int &g : cows[i]){
-			cin >> g;
+	// read read read
+	setIO();
+	ints(t);
+    while(t--){
+		ll n;
+        re(n);
+		vector<int> a(n);
+		re(a);
+		sort(all(a));
+		bool ans = 0;
+		if(n == 1){
+			ans = 1;
+			goto next;
 		}
-		while(cows[i].back() != i){	
-			cows[i].pop_back();
+		if(a[1] != a[0]){
+			ans = 1;
+			goto next;
 		}
-    }
+		for(int i = 2; i < n; i++){
+			ans|=(a[i] >= a[0] && a[i] % a[0] != 0);
+		}
+		
 
-    // Performing DFS from each cow.
-    for (int i = 1; i <= n; i++) {
-        dfs(i, i);
-    }
-    // Outputting reachable cows.
-    for (int i = 1; i <= n; i++) {
-        for (int g : cows[i]) {
-            if (reachable[g][i]) {
-                ps(g);
-				break;
-            }
-        }
-    }
 
-   
+		next:
+			ans ? cout << "YES" << endl : cout << "NO" << endl;
+			continue;
+    }
+    
 	// you should actually read the stuff at the bottom
 }
 

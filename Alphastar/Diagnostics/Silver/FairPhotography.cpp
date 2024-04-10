@@ -30,5 +30,18 @@ int main() {
     }
     if(g == h || g == 0 || h == 0){
         cout << cow[n-1].first - cow[0].first << endl;
+        return;
+    }
+    int ans = 0;
+    int lp = 0;
+    int rp = n - 1;
+    while(lp < rp){
+        bool moreG = false;
+        if(g == h || g == 0 || h == 0){
+            ans = cow[rp].first - cow[lp].first;
+        }
+        if(lp == rp){
+            
+        }
     }
 }
