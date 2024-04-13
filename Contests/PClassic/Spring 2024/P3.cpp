@@ -30,38 +30,19 @@ using str = string; // yay python!
 #define all(x) bg(x), end(x)
 
 int main() {
-    int n;
-    int t;
-    vector<int> arr;
-    for(int i=0; i < n; i++){
-        int a;
-        cin >> a;
-        arr.push_back(a);
+    int a, b;
+    cin >> a >> b;
+    if(a == b){
+        cout << 0 << endl;
+        return 0;
     }
-    int cap;
-    cin >> cap;
-    int ft;
-    cin >> ft;
-    int wt;
-    cin >> wt;
-    ll ans = 0;
-    if(wt <= ft){
-        for(int i = 0; i < n; i++){
-            ans+=wt*arr[i];
-        }
-        cout << ans << endl;
+    int wins = a-b;
+    int split = b+1;
+    int ans = wins/split;
+    if(wins % split != 0){
+        ans++;
     }
-    else{
-        for(int i = 0; i < n; i++){
-            if(i < n-cap){
-                ans+=wt*arr[i];
-            }
-            else{
-                ans+=ft*arr[i];
-            }
-        }
-    }
-
+    cout << ans << endl;
 	// read read read
 	// you should actually read the stuff at the bottom
 }
