@@ -89,6 +89,7 @@ int main() {
             }
         }
     }
+    
     bool ans = dfs(startX, startY);
     ans ? cout << "YES" : cout << "NO";
 	// read read read
