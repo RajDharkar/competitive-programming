@@ -278,18 +278,26 @@ inline namespace FileIO {
 int main() {
 	// read read read
 	setIO();
-	ll n;
-	cin >> n;
-	while(n!=1){
-        cout << n << " ";
-        if(n%2 == 0){
-            n/=2;
-        }
-        else{
-            n=n*3 + 1;
-        }
+    ints(t);
+	while(t--){
+	    ints(n);
+	    vector<int> num;
+	    
+	    for(int i = 0; i < n; i++){
+	        ints(a);
+	        if(a%2 == 1){
+	            num.push_back(a);
+	        }
+	    }
+	    if(num.size() == 0){
+	        cout << 0;
+	        continue;
+	    }
+	    F0R(i, int(num.size()) - 1){
+	        cout << num[i] << " ";
+	    }
+	    cout << num[int(num.size())-1];
 	}
-	cout << 1;
 	// you should actually read the stuff at the bottom
 }
 

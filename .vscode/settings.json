@@ -1,3 +1,40 @@
 {
+<<<<<<< HEAD
     "C_Cpp.errorSquiggles": "disabled"
+=======
+    "files.associations": {
+        "any": "cpp",
+        "array": "cpp",
+        "charconv": "cpp",
+        "compare": "cpp",
+        "complex": "cpp",
+        "functional": "cpp",
+        "ranges": "cpp",
+        "ratio": "cpp",
+        "scoped_allocator": "cpp",
+        "tuple": "cpp",
+        "type_traits": "cpp",
+        "utility": "cpp",
+        "variant": "cpp",
+        "cstring": "cpp",
+        "iostream": "cpp",
+        "string": "cpp",
+        "ostream": "cpp",
+        "random": "cpp",
+        "unordered_set": "cpp",
+        "map": "cpp",
+        "format": "cpp",
+        "deque": "cpp",
+        "forward_list": "cpp",
+        "list": "cpp",
+        "unordered_map": "cpp",
+        "vector": "cpp",
+        "string_view": "cpp",
+        "initializer_list": "cpp",
+        "span": "cpp",
+        "stacktrace": "cpp",
+        "regex": "cpp",
+        "valarray": "cpp"
+    }
+>>>>>>> 9b2839b708afc58264d6a46576f26f813f6a2e6e
 }
