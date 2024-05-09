@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-    "C_Cpp.errorSquiggles": "disabled"
-=======
     "files.associations": {
         "any": "cpp",
         "array": "cpp",
@@ -34,7 +31,8 @@
         "span": "cpp",
         "stacktrace": "cpp",
         "regex": "cpp",
-        "valarray": "cpp"
-    }
->>>>>>> 9b2839b708afc58264d6a46576f26f813f6a2e6e
+        "valarray": "cpp",
+        "iosfwd": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
 }
