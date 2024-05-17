@@ -59,7 +59,6 @@
             // cout << mainP[i] << " ";
             indexes[mainP[i]] = i+1;
         }
-        cout << endl;
         ll prev = 0;
         vector<pl> moves;
         vector<pl> movesPoints;
@@ -112,7 +111,6 @@
             ans.push_back(start);
             // cout << ans[i] << " ";
         }
-        cout << endl;
         for(ll i = 0; i < nPoints; i++){
             start2+=diffPoints[i];
             pointSum.push_back(start2);
