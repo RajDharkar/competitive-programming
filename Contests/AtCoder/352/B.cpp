@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-
 #ifdef LOCAL
 #else
 #define debug(...) 42
