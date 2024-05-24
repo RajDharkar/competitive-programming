@@ -32,7 +32,9 @@
         "stacktrace": "cpp",
         "regex": "cpp",
         "valarray": "cpp",
-        "iosfwd": "cpp"
+        "iosfwd": "cpp",
+        "chrono": "cpp",
+        "*.tcc": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
