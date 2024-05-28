@@ -92,3 +92,6 @@ int main() {
 //SOLUTION - https://www.youtube.com/watch?v=W4ZYL456PVg&list=PLFfCaQZaHSRTgAES57AoS9D6cyLtrvIqh&index=14
 //Next time I need to observe how simulating the collisions in O(1) isn't possible because idk its hard
 //This is good solution, I'm still writing it right now, but I'm trying to figure out how T was calculated.
+//after watching the top hat part again i understand it now
+// The final array keeps track of which cow is holding the top hat and in which order
+//
