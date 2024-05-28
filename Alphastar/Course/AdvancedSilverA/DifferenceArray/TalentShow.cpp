@@ -38,11 +38,20 @@ int main() {
 	int n, m;
     cin >> n >> m;
     vector<pi> pairs;
+	vector<int> ans(2 * m + 1)
+	vector<int> startPos(2 * m + 2);
+	vector<int> endPos(2 * m + 2);
     for(int i = 0; i < n; i++){
         int a, b;
         cin >> a >> b;
-        pairs.pb({n, m});
+        pairs.pb({a, b});
+		startPos[n]++;
+		endPos[m]++;
     }
+	for(int i = 0; i < sz(startPos); i++){
+		
+	}
+
 	// you should actually read the stuff at the bottom
 }
 
