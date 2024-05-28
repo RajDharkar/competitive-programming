@@ -1,29 +1,25 @@
-#include <cmath>
-#include <cstdio>
-#include <vector>
-#include <iostream>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 
+typedef pair<int, int> pii;
+typedef long long ll;
+#define sz(x) (int)(x).size()
 
 int main() {
     int n, m;
     cin >> n >> m;
-    vector<int> times(n);
+    vector<int> time(n);
     for(int i = 0; i < n; i++){
-        cin >> times[i];
+        cin >> time[i];
     }
-    sort(times.begin(), times.end());
+    int timeTaken = 0;
     int answer = 0;
-    int time = 0;
     for(int i = 0; i < n; i++){
-        if(times[i] + time > m){
+        if(time[i] + timeTaken > m){
             break;
         }
-        else{
-            answer++;
-            time+=times[i];
-        }
+        timeTaken+=time[i];
+        answer++;
     }
-    cout << answer;
+    cout << answer << endl;
 }

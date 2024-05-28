@@ -31,26 +31,39 @@ using pd = pair<db,db>;
 #define mp make_pair
 #define f first
 #define s second
+#define sz(x) (int)(x).size()
 
 
 int main() {
 	// read read read
-	int n, m;
+	ll n, m;
     cin >> n >> m;
-    vector<pi> pairs;
-	vector<int> ans(2 * m + 1)
-	vector<int> startPos(2 * m + 2);
-	vector<int> endPos(2 * m + 2);
-    for(int i = 0; i < n; i++){
-        int a, b;
+    vector<pl> pairs;
+	vector<ll> ans(2 * m + 2, 0);
+	vector<ll> startPos(m + 1, 0);
+	vector<ll> endPos(m +1, 0);
+    for(ll i = 0; i < n; i++){
+        ll a, b;
         cin >> a >> b;
-        pairs.pb({a, b});
-		startPos[n]++;
-		endPos[m]++;
+        pairs.push_back({a, b});
+		startPos[a]++;
+		endPos[b]++;
     }
 	for(int i = 0; i < sz(startPos); i++){
-		
+		for(int j = 0; j < sz(startPos); j++){
+			ans[i+j]+=startPos[i]*startPos[j];
+			ans[i+j+1]-=endPos[i] * endPos[j];
+		}
 	}
+	long num = 0;
+	for(ll i = 0; i <= 2 * m; i++){
+		num+=ans[i];
+		ans[i] = num;
+	}
+	for(int i = 0; i <= 2 * m; i++){
+		cout << ans[i] << endl;
+	}
+	//a + c <= k <= b + d
 
 	// you should actually read the stuff at the bottom
 }
