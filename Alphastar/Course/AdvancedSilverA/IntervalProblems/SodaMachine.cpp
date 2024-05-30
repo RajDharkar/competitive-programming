@@ -32,14 +32,14 @@
 
     int main() {
         // read read read
-        int n, k;
-        cin >> n >> k;
+        int n;
+        cin >> n;
         vector<pl> pairs(n);
         set<ll> mainPoints;
         for(int i = 0; i < n; i++){
+            cin >> pairs[i].f >> pairs[i].s;
             mainPoints.insert(pairs[i].f);
             mainPoints.insert(pairs[i].s);
-            cin >> pairs[i].f >> pairs[i].s;
         }
         vector<ll> mainP(mainPoints.begin(), mainPoints.end());
         ll intervalSize = ll(mainP.size())-1;
@@ -49,77 +49,52 @@
         }
         ll prev = 0;
         vector<pl> moves;
-        vector<pl> movesPoints;
         for(ll i = 0; i < n; i++){
             moves.push_back({indexes[pairs[i].f], indexes[pairs[i].s]});
+            //cout << moves[i].f << " " << moves[i].s << endl;
         }
-        for(ll i = 0; i < ll(moves.size()); i++){
-            // cout << moves[i].f << " " << moves[i].s << endl;
-            if(moves[i].f < moves[i].s){
-                movesPoints.push_back({moves[i].f+1, moves[i].s});
-            }
-            else{
-                movesPoints.push_back({moves[i].f-1, moves[i].s});
-            }
-            // cout << movesPoints[i].f << " " <<  movesPoints[i].s << endl;
-            if(moves[i].s < moves[i].f){
-                ll hold = moves[i].f;
-                moves[i].f = moves[i].s;
-                moves[i].s = hold;
-            }
-            moves[i].s--;
-        }
-        vector<int> intervals(ll(mainP.size())-1); 
-        ll nPoints = ll(mainP.size());
-        // cout << nPoints << endl;
-        ll n2 = ll(intervals.size());
+        ll n2 = ll(mainP.size());
         vector<int> diff(n2 + 1, 0);
-        vector<int> diffPoints(nPoints+1, 0);
         for(ll i = 0; i < ll(moves.size()); i++){
             ll a = min(moves[i].f, moves[i].s);
             ll b = max(moves[i].s, moves[i].f);
-            ll a2 = min(movesPoints[i].f, movesPoints[i].s);
-            ll b2 = max(movesPoints[i].f, movesPoints[i].s); 
-            a2--;b2--;
             a--;b--;
             diff[a]++;
             diff[b+1]--;
-            diffPoints[a2]++;
-            diffPoints[b2+1]--;
         }
         vector<int> ans;
-        vector<int> pointSum;
         ll start = 0;
-        ll start2 = 0;
+        int realAns = 0;
         for(ll i = 0; i < n2; i++){
             start+=diff[i];
             ans.push_back(start);
-            // cout << ans[i] << " ";
+            realAns = max(ans[i], realAns);
         }
-        for(ll i = 0; i < nPoints; i++){
-            start2+=diffPoints[i];
-            pointSum.push_back(start2);
-        }
-        ll answer = 0;
-        for(ll i = 1; i < ll(mainP.size()); i++){
-            if(ans[i-1] >= k){
-                answer+=abs(mainP[i]-mainP[i-1]);
-            }
-        }
-        int answer2 = 0;
-        for(ll i = 0; i < nPoints; i++){
-            // cout << pointSum[i] << " ";
-            if(pointSum[i] >= k){
-                answer2++;
-            }
-        }
-        cout << answer << endl;
-        //-11  -7  -4 -2 0 3
-        //    1   
-        // 0   1   2   3   4   5   6 
-        //   1   2   3   4   5   6
+        cout << realAns << endl;
+        // for(ll i = 0; i < nPoints; i++){
+        //     start2+=diffPoints[i];
+        //     pointSum.push_back(start2);
+        // }
+        // ll answer = 0;
+        // for(ll i = 1; i < ll(mainP.size()); i++){
+        //     if(ans[i-1] >= k){
+        //         answer+=abs(mainP[i]-mainP[i-1]);
+        //     }
+        // }
+        // int answer2 = 0;
+        // for(ll i = 0; i < nPoints; i++){
+        //     // cout << pointSum[i] << " ";
+        //     if(pointSum[i] >= k){
+        //         answer2++;
+        //     }
+        // }
+        // cout << answer << endl;
+        // //-11  -7  -4 -2 0 3
+        // //    1   
+        // // 0   1   2   3   4   5   6 
+        // //   1   2   3   4   5   6
         
-        // you should actually read the stuff at the bottom
+        // // you should actually read the stuff at the bottom
     }
 
     /* stuff you should look for
