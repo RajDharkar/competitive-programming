@@ -63,6 +63,7 @@ int main() {
 	for(int i = 0; i <= 2 * m; i++){
 		cout << ans[i] << endl;
 	}
+	
 	//a + c <= k <= b + d
 
 	// you should actually read the stuff at the bottom
