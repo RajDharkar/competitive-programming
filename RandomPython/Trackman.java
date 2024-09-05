@@ -1,5 +1,8 @@
+package RandomPython;
 
 import javax.swing.JOptionPane;
+
+import TrackmanMethods;
 public class Trackman {
     static double[] holes;
     static int[] par;
