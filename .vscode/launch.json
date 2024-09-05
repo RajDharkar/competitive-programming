@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "ImageDisplayExample",
+            "request": "launch",
+            "mainClass": "ImageDisplayExample",
+            "projectName": "competitive-programming_73d714ea"
+        },
+        {
+            "type": "java",
             "name": "Generate",
             "request": "launch",
             "mainClass": "Generate",
