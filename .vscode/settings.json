@@ -35,7 +35,9 @@
         "iosfwd": "cpp",
         "chrono": "cpp",
         "*.tcc": "cpp",
-        "bitset": "cpp"
+        "bitset": "cpp",
+        "limits": "cpp",
+        "climits": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
