@@ -37,7 +37,8 @@
         "*.tcc": "cpp",
         "bitset": "cpp",
         "limits": "cpp",
-        "climits": "cpp"
+        "climits": "cpp",
+        "cmath": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

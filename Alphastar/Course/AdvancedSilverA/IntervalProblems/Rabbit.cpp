@@ -2,107 +2,187 @@
 using namespace std;
 typedef long long ll;
 typedef pair<ll, ll> pii;
-#define sz(x) (ll)(x).size()
-#define f first
-#define s second
-
-struct Rabbit {
-    ll x;
-    bool spots;
-};
-bool cmp(Rabbit a, Rabbit b) {
-    return a.x < b.x;
-}
-int main() {
+int main()
+{
     ll n, a, b;
     cin >> n >> a >> b;
-    vector<Rabbit> rs(n);
-    for (ll i = 0; i < n; i++) {
-        string st;
-        ll pos;
-        cin >> st >> pos;
-        rs[i].spots = (st == "S");
-        rs[i].x = pos;
-    }
-    sort(rs.begin(), rs.end(), cmp);
-
-    ll preEndX = -1;
-    ll res = 0;
-    ll x1 = 0;
-    ll x2 = 0;
-    if(rs[0].spots){
-        x2 = rs[0].x + (rs[1].x - rs[0].x)/2;
-
-        if(x2 >= a){
-            x1 = max(x1, a);
-            res+=x2 - x1 + 1;
-            preEndX = x2;
+    vector<pii> rabbits(n);
+    rabbits.push_back({-1e9, 0});
+    for (ll i = 0; i < n; i++)
+    {
+        string type;
+        ll position;
+        cin >> type >> position;
+        rabbits[i].first = position;
+        if (type == "S")
+        {
+            rabbits[i].second = 1;
         }
     }
-
-    for(int i = 1; i < n - 1; i++){
-        if(!rs[i].spots){
-            continue;
-        }
-        ll prevD = rs[i].x - rs[i-1].x;
-        ll nextD = rs[i+1].x - rs[i].x;
-
-        x1 = rs[i].x - prevD;
-        x2 = rs[i].x + nextD;
-
-        res+=x2 - x1 + 1;
-
-        if(x1 == preEndX){
-            res--;
-        }
-        preEndX = x2;
-
-        if(x2 >= a){
-            res -= x2 - a;
+    rabbits.push_back({1e9, 0});
+    sort(rabbits.begin(), rabbits.end());
+    // cout << a << " " << b << endl;
+    // for (pii rabbitTest : rabbits)
+    // {
+    //     cout << rabbitTest.first << " " << rabbitTest.second << endl;
+    // }
+    ll startingRabbit = 0;
+    for (ll i = 1; i < n + 1; i++)
+    {
+        if (rabbits[i].first > a)
+        {
+            startingRabbit = i - 1;
             break;
         }
     }
+    ll endingRabbit = n - 1;
+    for (ll i = n - 1; i >= 0; i--)
+    {
+        if (rabbits[i].first < b)
+        {
+            endingRabbit = i + 1;
+            break;
+        }
+    } 
+   // cout << startingRabbit << " " << endingRabbit << " Positions \n";
+    ll answer = 0;
+    for (ll i = startingRabbit; i < endingRabbit - 1; i++)
+    {
+        ll x = rabbits[i].first;
+        ll y = rabbits[i + 1].first;
 
-    if(x2 < a && rs[n-1].spots){
-        ll prevD = (rs[n-1].x - rs[n-2].x)/2; 
-        res += prevD;
-        if(rs[n-1].x - prevD == preEndX){
-            res--;                                              
+        if ((y - x) % 2 == 0)
+        {
+            ll left = x;
+            ll right = (x + y) / 2 - 1;
+            bool f = false;
+            if(left < a){
+                left = a;
+                f = true;
+                if(right < a){
+                    right = a; //hence negating any points given
+                }
+                if(right == a){
+                    //something might need to be done here however I am not sure
+                }
+            }
+            bool l = false;
+            if(right > b){
+                right = b;
+                l = true;
+                if(left > a){
+                    left = b;
+                }
+                if(left == b){
+
+                }
+            }
+            if (rabbits[i].second == 1 && left <= right)
+            {
+                answer += right - left;
+            }
+            if (rabbits[i].second == 1 || rabbits[i + 1].second == 1)
+            {
+                answer++;
+            }
+            left = (x + y) / 2 + 1;
+            right = rabbits[i + 1].second;
+            //cout << left << " " << right << "LR" << endl;
+            f = false;
+            if(left < a){
+                left = a;
+                f = true;
+                if(right < a){
+                    right = a; //hence negating any points given
+                }
+                if(right == a){
+                    //something might need to be done here however I am not sure
+                }
+            }
+            l = false;
+            if(right > b){
+                right = b;
+                l = true;
+                if(left > a){
+                    left = b;
+                }
+                if(left == b){
+
+                }
+            }
+            if (rabbits[i + 1].second == 1 && left <= right)
+            {
+                answer += right - left;
+               //cout << answer << "ANSWER";
+            }
+        }
+        else
+        {
+            ll left = x;
+            ll right = (x + y) / 2;
+            bool f = false;
+            if(left < a){
+                left = a;
+                f = true;
+                if(right < a){
+                    right = a; //hence negating any points given
+                }
+                if(right == a){
+                    //something might need to be done here however I am not sure
+                }
+            }
+            bool l = false;
+            if(right > b){
+                right = b;
+                l = true;
+                if(left > a){
+                    left = b;
+                }
+                if(left == b){
+
+                }
+            }
+            if (rabbits[i].second == 1 && left <= right)
+            {
+                answer += right - left;
+            }
+            left = y - (y - x) / 2;
+            right = y;
+          //  cout << left << " " << right << "LR" << endl;
+            f = false;
+            if(left < a){
+                left = a;
+                f = true;
+                if(right < a){
+                    right = a; //hence negating any points given
+                }
+                if(right == a){
+                    //something might need to be done here however I am not sure
+                }
+            }
+            l = false;
+            if(right > b){
+                right = b;
+                l = true;
+                if(left > a){
+                    left = b;
+                }
+                if(left == b){
+
+                }
+            }
+            if (rabbits[i + 1].second == 1 && left <= right)
+            {
+                answer += right - left;
+               // cout << answer << "ANSWER";
+            }
         }
     }
-    cout << res << endl;
-
-    // vector<pii> intervals;
-    // if(rs[0].spots){
-    //     ll right = (rs[0].x + rs[1].x)/2;
-    //     intervals.push_back({0, right});
-    // }
-    // if(rs[n-1].spots){
-    //     ll left = rs[n-1].x-rs[n-2].x;
-    //     left/=2;
-    //     left = rs[n-1].x - left;
-    //     intervals.push_back({left, 1e9});
-    // }
-    // for(ll i = 1; i < n - 1; i++){
-    //     if(rs[i].spots){
-    //         ll left = rs[i].x-rs[i-1].x;
-    //         left/=2;
-    //         left = rs[i].x - left;
-    //         ll right = (rs[i].x + rs[i+1].x)/2;
-    //         intervals.push_back({left, right});
-    //     }
-    // }
-    // ll ans = 0;
-    // for(ll i = 0; i < sz(intervals); i++){
-    //     if(intervals[i].s >= b && intervals[i].f >= b){
-    //         continue;
-    //     }
-    //     if(intervals[i].f <= a && intervals[i].s <= a){
-    //         continue;
-    //     }
-    //     //cout << min(b, intervals[i].s) - max(a, intervals[i].f) + 1 << endl;
-    //     ans+=min(b, intervals[i].s) - max(a, intervals[i].f) + 1;
-    // }
-    // cout << ans << endl;
-
+    ll otherAnswer = 0;
+    for(ll i = 0; i <= n; i++){
+        if(rabbits[i].first >= a && rabbits[i].first <= b && rabbits[i].second == 1){
+            otherAnswer++;
+        }
+    }
+    cout << answer + otherAnswer << endl;
 }
