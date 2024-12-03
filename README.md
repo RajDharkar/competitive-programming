@@ -13,5 +13,5 @@ Welcome to my portfolio! This is where I showcase my journey through competitive
 
 ## 📫 Contact Me
 Feel free to reach out for collaboration or just to say hello!
-- **Email**: [your.email@example.com](mailto:rajveer.dharkar@gmail.com)
-- **LinkedIn**: [Your LinkedIn Profile](https://www.linkedin.com/in/rajveer-dharkar-8b911330b)
+- **Email**: [rajveerdharkar@gmail.com](mailto:rajveer.dharkar@gmail.com)
+- **LinkedIn**: [Rajveer Dharkar](https://www.linkedin.com/in/rajveer-dharkar-8b911330b)
