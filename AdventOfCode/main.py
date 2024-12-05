@@ -23,7 +23,7 @@ import json
 import time
 from bs4 import BeautifulSoup
 from datetime import datetime
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
 import numpy
 
@@ -237,9 +237,9 @@ class Client:
         return False
 
 def main():
-    load_dotenv('.env')
+    # load_dotenv('.env')
     
-    client = Client(os.getenv('SESSION_ID'))
+    client = Client("53616c7465645f5fd136a776d56a72cb4dde6b28cfc2cd4a77d1d84681c98d23af7ccaf1fc3f2e962c53b6d9b2db5bc4f7a6657ed4f819d2c547afef64c5faa3")
     client.run()
     
 if __name__ == '__main__':
