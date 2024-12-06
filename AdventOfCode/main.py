@@ -93,7 +93,6 @@ class Client:
 				"cells": [{ "cell_type": "code", "metadata": {}, "source":[
         			"def parse_input(file_path):\n",
 					"    with open(file_path, 'r') as file:\n",
-					"        for line in file:\n",
 					"            lines = [line.strip() for line in file] \n",
 					"    return lines"
           		] }],
