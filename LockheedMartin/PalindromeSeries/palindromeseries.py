@@ -12,7 +12,7 @@ def is_palindrome():
     return True
 for _ in range(t):
     n = int(input())
-    works = True
+    works = True    
     l = []
     for x in range(n):
         if not is_palindrome():

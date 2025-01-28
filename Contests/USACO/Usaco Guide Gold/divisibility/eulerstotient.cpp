@@ -75,7 +75,7 @@ int main() {
     // while(x--){
     //     cout << x << " " << totient(x) << endl;
     // }
-precompute();
+    precompute();
 
     //say on skibidi
 	// you should actually read the stuff at the bottom

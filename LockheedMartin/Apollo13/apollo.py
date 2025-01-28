@@ -4,4 +4,4 @@ for _ in range(t):
     for num in l:
         num -= 180
         num %= 360
-    print(f'{" ".join(f"{x:6.2f}" for x in l)}')
+    print(f'{" ".join(f"{x:06.2f}" for x in l)}')
