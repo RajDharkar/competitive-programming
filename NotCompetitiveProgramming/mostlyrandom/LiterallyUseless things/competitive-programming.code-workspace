@@ -1,0 +1,24 @@
+{
+	"folders": [
+		{
+			"name": "competitive-programming",
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"iostream": "cpp",
+			"ostream": "cpp",
+			"chrono": "cpp",
+			"span": "cpp",
+			"cmath": "cpp",
+			"complex": "cpp",
+			"numeric": "cpp",
+			"random": "cpp",
+			"type_traits": "cpp",
+			"cassert": "cpp",
+			"bitset": "cpp",
+			"*.tcc": "cpp"
+		}
+	}
+}

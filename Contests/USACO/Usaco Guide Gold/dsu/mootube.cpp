@@ -90,9 +90,8 @@ bool cmpEdge(Edge one, Edge two){
 }
 
 int main(){
-
     freopen("mootube.in", "r", stdin);
-    freopen("mootube.out", "w", stdout);
+    freopen("mootube.in", "w", stdout);
     int n, q;
     cin >> n >> q;
     if(n == 1){
@@ -111,7 +110,7 @@ int main(){
     }
 
     for(int i=0;i<q;i++){
-        int a, b;
+        int a, b;   
         cin >> a >> b;
         b--;
         qs[i].k = a; 
@@ -143,5 +142,4 @@ int main(){
     for(int i=0;i<q;i++){
         cout << sols[i] - 1 << '\n'; //so we arent double counting
     }
-
 }
