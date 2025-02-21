@@ -11,26 +11,26 @@ int main() {
     int t;
     cin >> t;
     while(t--){
-        int n;
+        ll n;
         cin >> n;
-        vector<int> score(n);
+        vector<ll> score(n);
         for(auto &a : score)cin >> a;
-        int dp[n+1];
-        for(int i=0;i<n+1;i++)dp[i]=0;
-        dp[0]=0;
-        for(int i = 1; i <= n+1; i++){
-            if(i>1){
-                dp[i]=min(dp[i-1],dp[i-2]+score[i-2])+score[i-1];
+        vector<vector<ll>> dp(2, vector<ll>(n + 1, 1e9));
+        dp[1][0] = 0; //partner goes first
+        for(int i=0;i<n;i++){
+            dp[0][i+1]=min(dp[0][i+1], dp[1][i] + score[i]);
+            dp[1][i+1]=min(dp[1][i+1], dp[0][i]);
+
+            if(i <= n-2){
+                dp[0][i+2]=min(dp[0][i+2], dp[1][i] + score[i] + score[i+1]);
+                dp[1][i+2]=min(dp[1][i+2], dp[0][i]);
             }
-            else{
-                dp[i]=score[i-1];
-            }
-            for(int i=0;i<n+1;i++)cout << dp[i] << " ";
-            cout << endl;
         }
-        cout << dp[n] << endl;
-        for(int i=0;i<n+1;i++)cout << dp[i] << " ";
-        cout<<'\n';
+
+        // for(int i=0;i<=n;i++){
+        //     cout << dp[0][i] << " " << dp[1][i] << endl;
+        // }
+        cout << min(dp[0][n], dp[1][n]) << endl;
     }
 }
 
