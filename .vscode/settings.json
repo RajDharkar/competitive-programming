@@ -38,7 +38,13 @@
         "bitset": "cpp",
         "limits": "cpp",
         "climits": "cpp",
-        "cmath": "cpp"
+        "cmath": "cpp",
+        "algorithm": "cpp"
     },
-    "C_Cpp.errorSquiggles": "disabled"
+    "C_Cpp.errorSquiggles": "enabled",
+    "vim.useCtrlKeys": true,
+    "vim.easymotion": true,
+    "vim.vimrc.enable": true,
+    "vim.sneak": true,
+    "cph.general.saveLocation": ""
 }

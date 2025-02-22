@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="LemonadeLineTCs">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/TestCases/LemonadeLineTCs.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
