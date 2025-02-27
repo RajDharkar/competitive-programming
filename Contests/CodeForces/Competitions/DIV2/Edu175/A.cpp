@@ -276,10 +276,16 @@ inline namespace FileIO {
 
 int main() {
 	// read read read
+    //cout << 270 % 15 << endl;
 	setIO();
     ints(t)
     while(t--){
-        
+        ll n;
+        cin >> n;
+        ll rem = n%15;
+        //ps(rem);
+        ll ans = (3*(n/15)) + min(rem+1, 3LL);
+        ps(ans);
     }
 	
 	// you should actually read the stuff at the bottom

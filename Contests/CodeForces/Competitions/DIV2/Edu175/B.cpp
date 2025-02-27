@@ -279,7 +279,41 @@ int main() {
 	setIO();
     ints(t)
     while(t--){
-        
+        ll n, x, k;
+        cin >> n >> x >> k;
+        string s;
+        cin >> s;
+        ll pos = x;
+        ll ans = 0;
+        for(ll i = 0; i < n && k > 0; i++){
+            k--;
+            pos += s[i] =='R';
+            pos -= s[i] =='L';
+            if(pos==0){
+                ans++;
+                break;
+            }    
+        }
+        //cout << pos << k<< endl;
+        if(pos==0){
+            ll npos = 0;
+            ll newans = 0;
+            ll newcount = 0;
+            for(int i = 0; i < n && k > 0; i++){
+                newcount++;
+                k--;   
+                npos += s[i] =='R';
+                npos -= s[i] =='L';
+                if(npos==0){
+                    newans++;
+                    break;
+                } 
+            }
+            if(newans){
+                ans += 1+(k/newcount);
+            }
+        }
+        ps(ans);
     }
 	
 	// you should actually read the stuff at the bottom
