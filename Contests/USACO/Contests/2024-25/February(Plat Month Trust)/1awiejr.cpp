@@ -72,6 +72,6 @@ int main() {
     }
     vector<ll> lonely(n);
     for(int i = 0; i < n; i++){
-        if(!works[i])
+        // if(!works[i])
     }
 }
