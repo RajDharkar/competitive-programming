@@ -28,7 +28,28 @@ ll cdiv(ll a, ll b) { return a/b+((a^b)>0&&a%b); } // divide a by b rounded up
 ll fdiv(ll a, ll b) { return a/b-((a^b)<0&&a%b); } // divide a by b rounded down
 
 void solve(){
+	ll n, k, x;
+	cin >> n >> k >> x;
+	vector<ll> arr(n);
+	for(auto &x : arr)cin >> x;
+	ll sum = accumulate(all(arr), 0LL);
+	assert(sum > 0);
+	ll need = k * sum - x;
 
+	if(need < 0){cout << 0 << endl;return;}
+
+	ll full = need / sum;
+	ll left = need % sum;
+
+	ll ans = full * n;
+	ll s = 0;
+	for(int i = 0; i < n; i++){
+		s += arr[i];
+		ans++;
+		if(s > left)break;
+	}
+
+	cout << ans << endl;
 }
 
 int main() {

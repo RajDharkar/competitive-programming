@@ -28,7 +28,9 @@ ll cdiv(ll a, ll b) { return a/b+((a^b)>0&&a%b); } // divide a by b rounded up
 ll fdiv(ll a, ll b) { return a/b-((a^b)<0&&a%b); } // divide a by b rounded down
 
 void solve(){
-
+    ll n;
+    cin >> n;
+    cout << n * 2 << '\n';
 }
 
 int main() {

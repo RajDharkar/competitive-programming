@@ -28,7 +28,14 @@ ll cdiv(ll a, ll b) { return a/b+((a^b)>0&&a%b); } // divide a by b rounded up
 ll fdiv(ll a, ll b) { return a/b-((a^b)<0&&a%b); } // divide a by b rounded down
 
 void solve(){
-
+	int n;
+	cin >> n;
+	vector<int> perm(n);
+	for(auto &x : perm)cin >> x;
+	int c = 0; 
+	for(auto x : perm){
+		if(c+1 == x)
+	}
 }
 
 int main() {

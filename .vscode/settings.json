@@ -46,5 +46,10 @@
     "vim.easymotion": true,
     "vim.vimrc.enable": true,
     "vim.sneak": true,
-    "cph.general.saveLocation": ""
+    "cph.general.saveLocation": "",
+    "cph.general.useShortCodeForcesName": true,
+    "C_Cpp.inlayHints.autoDeclarationTypes.enabled": true,
+    "cph.general.defaultLanguageTemplateFileLocation": "C:\\Users\\meggs\\OneDrive\\Documents\\GitHub\\competitive-programming\\NotCompetitiveProgramming\\CoolStuff\\benqtemplate.cpp",
+    "cph.general.defaultLanguage": "cpp",
+    "cph.language.c.Args": "-O2 -Wall -Wextra -Wshadow -Wconversion DDEBUG -g"
 }
