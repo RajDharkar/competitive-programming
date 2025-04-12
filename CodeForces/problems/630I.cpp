@@ -14,7 +14,7 @@ void solve(){
     cin >> n;
     int s = n*2-2;
     int count = n-s;
-    int ans = 4*3
+    int ans = 4*3;
 }
 
 int main(){
