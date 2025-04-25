@@ -9,7 +9,15 @@ struct Line{
 };
 
 bool cmp(Line a, Line b){
-    if(a.x == b.x)return a.i > b.i;
+    if(a.x == b.x){
+        if(a.isLeft){
+            return 0;
+        }
+        if(b.isLeft){
+            return 1;
+        }
+        return a.x < b.x;
+    }
     return a.x < b.x;
 }
 
@@ -45,7 +53,6 @@ int main(){
         if(swpl.count(k.i)){
             indextoroom[k.i]= int(swpl.size());
             swpl.erase(k.i);
-
         } else{
             swpl.insert(k.i);
         }
@@ -54,6 +61,6 @@ int main(){
 
     cout << ans << endl;
     for(int i = 0; i < n; i++){
-        cout << indextoroom[i] << " ";
+        cout << 1+ans-indextoroom[i] << " ";
     }
 }
