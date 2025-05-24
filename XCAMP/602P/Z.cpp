@@ -11,8 +11,8 @@ typedef pair<ll, ll> pii;
 #define f first
 #define s second
 
-const ll MOD = 988244353
+const ll MOD = 988244353;
 int main(){
     ll n, m, k; cin >> n >> m >> k;
-
+    vector<int> dp(10001, 0);
 }
