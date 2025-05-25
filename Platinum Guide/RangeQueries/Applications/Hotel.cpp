@@ -46,7 +46,7 @@ void query(ll x, ll k=1, ll l=0, ll r=n-1){
     }
 }
 
-ll main(){
+int main(){
     fastio
     cin >> n >> m;
     res(tree, n * 5);
