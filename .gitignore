@@ -1,1 +1,6 @@
-.qodo
+.idea/
+.vscode/
+.qodo/
+.cph/
+
+*~

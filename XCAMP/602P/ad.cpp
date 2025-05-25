@@ -34,7 +34,7 @@ void dfs2(ll n, ll p){
         dfs2(x, n);
     }
 }
-int main(){
+ll main(){
     ll n;
     cin >> n;
     adj.resize(n);
