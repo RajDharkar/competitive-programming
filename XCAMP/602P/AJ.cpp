@@ -15,30 +15,56 @@ typedef pair<ll, ll> pii;
 #define vvi vector<vi>
 #define res(x, n) (x).resize(n)
 
-vvi adj;
+const int N = 205;
+int adj[N][N];
 
 int main(){
     int n, m; cin >> n >> m;
-    adj.resize(n);
-    for(int i = 0; i < m; i++){
-        int u, v, b;
-        cin >> u >> v >> b;
-        if(b == 0){
-            adj[v].pb(u);
-        } else{
-            adj[u].pb(v);
+    fill(adj, adj+N, 1e9);
+    vector<pii> edges;
+    for(int i = 0; i < n; i++) adj[i][i] = 0;
+    for(int i=0; i<m; i++){
+        int u, v; cin >> u >> v;
+        edges.pb({--u, --v});
+        int t; cin >> t;
+        if(t) {
+            adj[u][v] = 1;
+            adj[v][u] = -1;
+        }
+        else{
+            adj[u][v] = adj[v][u] = 1;
         }
     }
 
-    queue<int> q;
-    vi visited(n,0);
-    visited[0] = 1;
-    q.push(0);
-    while(!q.empty()){
-        int node = q.front(); q.pop();
-        
-        for(auto &x : adj[node]){
-            if(!visited[x]) q.push(x);
+    for(int k = 0; k < n; k++){
+        for(int i = 0; i < n; i++){
+            for(int j = 0; j < n; j++){
+                if(adj[i][k] + adj[k][j] < adj[i][j]){
+                    adj[i][j] = adj[i][k] + adj[k][j];
+                }    
+            }      
+        }
+    }
+    bool works = 1;
+    int mx = -1e9;
+    int id = -1;
+    for(int i = 0; i < n; i++){
+        if(adj[i][i] < 0) works = 0;
+        for(int j = 0; j < n; j++) {
+            if(adj[i][j] > mx){
+                mx = adj[i][j];
+                id = i;
+            }
+        }
+    }
+
+    for(int i = 0; i < m; i++) works &= adj[id][edges[i].f] != adj[id][edges[i].s];
+    if(!works){
+        cout << "NO" << '\n';
+    } else{
+        cout << "YES" << '\n' << mx << '\n';
+        for(int i = 0; i < n; i++){
+            cout << adj[id][i] << " \n"[i == n-1];
         }
     }
 }
