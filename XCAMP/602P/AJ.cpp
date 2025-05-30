@@ -15,18 +15,18 @@ typedef pair<ll, ll> pii;
 #define vvi vector<vi>
 #define res(x, n) (x).resize(n)
 
-const int N = 205;
-int adj[N][N];
+const ll N = 205;
+ll adj[N][N];
 
 int main(){
-    int n, m; cin >> n >> m;
-    fill(adj, adj+N, 1e9);
+    ll n, m; cin >> n >> m;
+    fill(&adj[0][0], &adj[0][0] + N*N, 1e9);
     vector<pii> edges;
-    for(int i = 0; i < n; i++) adj[i][i] = 0;
-    for(int i=0; i<m; i++){
-        int u, v; cin >> u >> v;
+    for(ll i = 0; i < n; i++) adj[i][i] = 0;
+    for(ll i=0; i<m; i++){
+        ll u, v; cin >> u >> v;
         edges.pb({--u, --v});
-        int t; cin >> t;
+        ll t; cin >> t;
         if(t) {
             adj[u][v] = 1;
             adj[v][u] = -1;
@@ -36,9 +36,9 @@ int main(){
         }
     }
 
-    for(int k = 0; k < n; k++){
-        for(int i = 0; i < n; i++){
-            for(int j = 0; j < n; j++){
+    for(ll k = 0; k < n; k++){
+        for(ll i = 0; i < n; i++){
+            for(ll j = 0; j < n; j++){
                 if(adj[i][k] + adj[k][j] < adj[i][j]){
                     adj[i][j] = adj[i][k] + adj[k][j];
                 }    
@@ -46,11 +46,11 @@ int main(){
         }
     }
     bool works = 1;
-    int mx = -1e9;
-    int id = -1;
-    for(int i = 0; i < n; i++){
+    ll mx = -1e9;
+    ll id = -1;
+    for(ll i = 0; i < n; i++){
         if(adj[i][i] < 0) works = 0;
-        for(int j = 0; j < n; j++) {
+        for(ll j = 0; j < n; j++) {
             if(adj[i][j] > mx){
                 mx = adj[i][j];
                 id = i;
@@ -58,12 +58,12 @@ int main(){
         }
     }
 
-    for(int i = 0; i < m; i++) works &= adj[id][edges[i].f] != adj[id][edges[i].s];
+    for(ll i = 0; i < m; i++) works &= adj[id][edges[i].f] != adj[id][edges[i].s];
     if(!works){
         cout << "NO" << '\n';
     } else{
         cout << "YES" << '\n' << mx << '\n';
-        for(int i = 0; i < n; i++){
+        for(ll i = 0; i < n; i++){
             cout << adj[id][i] << " \n"[i == n-1];
         }
     }
