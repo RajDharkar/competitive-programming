@@ -16,12 +16,17 @@ typedef pair<ll, ll> pii;
 #define res(x, n) (x).resize(n)
 
 void solve(){
-    
+    int n;
+    cin >> n;
+    cout << 1 << " ";
+    for(int i = n; i >= 2; i--){
+        cout << i << " \n"[i == 2];
+    }
 }
 
 int main(){
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while(t--){
         solve();
     }

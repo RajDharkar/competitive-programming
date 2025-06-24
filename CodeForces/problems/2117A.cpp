@@ -16,12 +16,30 @@ typedef pair<ll, ll> pii;
 #define res(x, n) (x).resize(n)
 
 void solve(){
-    
+    ll n, x;
+    cin >> n >> x;
+    vi arr(n); for(auto &x : arr)cin >> x;
+    ll on = 0;
+    bool works = 1;
+    for(ll i = 0; i < n; i++){
+        if(arr[i] && x > 0){
+            on = x;
+            x = 0;
+        }
+
+        if(arr[i]){
+            works &= on > 0;
+        }
+
+        on = max(on - 1, 0LL);
+    }
+
+    cout << (works ? "YES" : "NO") << '\n';
 }
 
 int main(){
-    int t = 1;
-    // cin >> t;
+    ll t = 1;
+    cin >> t;
     while(t--){
         solve();
     }
