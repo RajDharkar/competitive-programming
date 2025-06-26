@@ -16,7 +16,19 @@ typedef pair<ll, ll> pii;
 #define res(x, n) (x).resize(n)
 
 void solve(){
-    
+    int n, k;
+    cin >> n >> k;
+    vi arr(n + 1);
+    for(int i = 1; i <= n; i++)cin >> arr[i];
+    vi dp(n + 1, 1e9);
+    dp[1] = 0;
+    for(int i = 2; i <= n; i++){
+        int pnt = i; 
+        while(--pnt >= 1 && abs(pnt - i) <= k){
+            dp[i] = min(dp[pnt] + abs(arr[i] - arr[pnt]), dp[i]);
+        }
+    }
+    cout << dp[n];
 }
 
 int main(){

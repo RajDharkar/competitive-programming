@@ -15,15 +15,15 @@ typedef pair<ll, ll> pii;
 #define vvi vector<vi>
 #define res(x, n) (x).resize(n)
 
-void solve(){
-    
-}
-
 int main(){
-    int t = 1;
-    // cin >> t;
-    while(t--){
-        solve();
+    int n; cin >> n;
+    vi arr(n+1);
+    for(int i = 1; i <= n; i++)cin >> arr[i];
+    vi dp(n + 1, 1e9);
+    dp[1] = 0;
+    for(int i = 2; i <= n; i++){
+        dp[i] = min(dp[i - 1] + abs(arr[i] - arr[i - 1]), dp[i - 2] + abs(arr[i] - arr[i - 2]));
     }
+    cout << '\n';
+    cout << dp[n];
 }
-
