@@ -1,3 +1,3 @@
 rajveer dharkar competitive programming history :)
-+ random other stuff
+and random other stuff
 
